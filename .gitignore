@@ -1,0 +1,4 @@
+/.vs/TimeTrackerWarning/v14/*.suo
+/*.suo
+/TimeTrackerWarning/bin/
+/TimeTrackerWarning/obj
