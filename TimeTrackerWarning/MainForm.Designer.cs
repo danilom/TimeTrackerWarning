@@ -83,7 +83,8 @@
             this.Opacity = 0.5D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "oDesk Time Not Tracked";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Time Not Tracked";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);

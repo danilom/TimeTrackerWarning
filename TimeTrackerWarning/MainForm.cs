@@ -76,7 +76,7 @@ namespace TimeTrackerWarning
         private void MainForm_Load(object sender, EventArgs e)
         {
             var sb = Screen.AllScreens.Last().WorkingArea;
-            this.Location = new Point(sb.Right - this.Width, sb.Top + 40);
+            this.Location = new Point(sb.Right - this.Width, sb.Top + 150);
             //this.SetBounds((int)(sb.X + 0.5 * sb.Width), sb.Y + 20, sb.Width / 2, sb.Height / 3);
             this.Visible = IsWorkActive() && !IsTracking();
         }
