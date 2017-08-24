@@ -89,11 +89,11 @@ namespace TimeTrackerWarning
 
         public static bool ContainsBitmap(Bitmap smallBmp, Bitmap bigBmp)
         {
-            var pos = SearchBitmap(smallBmp, bigBmp, 0);
+            var pos = SearchBitmap(smallBmp, bigBmp, 0, true);
             return pos != null;
         }
 
-        public static Rectangle? SearchBitmap(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
+        public static Rectangle? SearchBitmap(Bitmap smallBmp, Bitmap bigBmp, double tolerance, bool ignoreGreen)
         {
             BitmapData smallData = 
               smallBmp.LockBits(new Rectangle(0, 0, smallBmp.Width, smallBmp.Height), 
@@ -139,17 +139,33 @@ namespace TimeTrackerWarning
                             matchFound = true;
                             for (j = 0; j < smallWidth; j++)
                             {
-                                //With tolerance: pSmall value should be between margins.
-                                int inf = pBig[0] - margin;
-                                int sup = pBig[0] + margin;
-                                if (sup < pSmall[0] || inf > pSmall[0])
+                                // Special case
+                                // Bright green -- match any pixel, regardless of value
+                                if (ignoreGreen
+                                    && j % 3 == 0 // aligned to RGB
+                                    && pSmall[0] == 0
+                                    && pSmall[1] == 0xFF
+                                    && pSmall[2] == 0)
                                 {
-                                    matchFound = false;
-                                    break;
+                                    // move on to next pixel, ignore comparison
+                                    pBig += 3;
+                                    pSmall += 3;
+                                    j += 2;
                                 }
+                                else
+                                {
+                                    // With tolerance: pSmall value should be between margins.
+                                    int inf = pBig[0] - margin;
+                                    int sup = pBig[0] + margin;
+                                    if (sup < pSmall[0] || inf > pSmall[0])
+                                    {
+                                        matchFound = false;
+                                        break;
+                                    }
 
-                                pBig++;
-                                pSmall++;
+                                    pBig++;
+                                    pSmall++;
+                                }
                             }
 
                             if (!matchFound) break;
