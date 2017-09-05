@@ -15,7 +15,7 @@ namespace TimeTrackerWarning
 {
     public partial class MainForm : Form
     {
-        List<ITimeTracker> _trackers = new List<ITimeTracker>();
+        ITimeTracker _tracker = new Tahometer();
 
         DateTime _startTime;
 
@@ -24,46 +24,59 @@ namespace TimeTrackerWarning
         DateTime _today;
         TimeSpan _timeWorkedToday;
         TimeSpan _timeWorkedYesterday;
-        const double _hourlyRate = 30;
+        const double _hourlyRate = 55;
 
         public MainForm()
         {
-            _trackers.Add(new ODesk());
-            _trackers.Add(new Tahometer());
-
             _startTime = DateTime.Now;
             _today = DateTime.Now.Date;
             InitializeComponent();
         }
 
-        bool IsTracking()
-        {
-            foreach (var tracker in _trackers)
-            {
-                if (tracker.CheckState() == TimeTrackingState.Active) { return true; }
-            }
-            return false;
-        }
-
+        TimeTrackingState _trackingState = TimeTrackingState.Unknown;
         private void timer_Tick(object sender, EventArgs e)
         {
-            bool isWorkActive = IsWorkActive();
-            bool isTracking = IsTracking();
+            CheckStateAndUpdate();
+        }
+        private void CheckStateAndUpdate()
+        {
+            var newState = _tracker.CheckState();
+            if (newState == _trackingState) { return; }
+            _trackingState = newState;
 
-            this.Visible = isWorkActive && !isTracking;
-            blinkLabelTimer.Enabled = this.Visible;
-
-            if (isTracking)
+            switch (_trackingState)
             {
-                if (_today != DateTime.Now.Date)
-                {
-                    _today = DateTime.Now.Date;
-                    _timeWorkedYesterday = _timeWorkedToday;
-                    _timeWorkedToday = TimeSpan.Zero;
-                }
+                case TimeTrackingState.Active:
+                    if (_today != DateTime.Now.Date)
+                    {
+                        _today = DateTime.Now.Date;
+                        _timeWorkedYesterday = _timeWorkedToday;
+                        _timeWorkedToday = TimeSpan.Zero;
+                    }
+                    _timeWorkedToday = _timeWorkedToday + TimeSpan.FromMilliseconds(checkODeskTimer.Interval);
+                    UpdateTimeAndEarnings();
 
-                _timeWorkedToday = _timeWorkedToday + TimeSpan.FromMilliseconds(checkODeskTimer.Interval);
-                UpdateTimeAndEarnings();
+                    this.Visible = false;
+
+                    blinkLabelTimer.Enabled = false;
+                    break;
+                case TimeTrackingState.Inactive:
+                case TimeTrackingState.Unknown:
+                    label1.Text = _trackingState == TimeTrackingState.Inactive ? 
+                        "Time NOT tracked." : "State unknown";
+                    this.BackColor = Color.Red;
+                    this.Visible = true;
+                    blinkLabelTimer.Enabled = true;
+                    break;
+                case TimeTrackingState.AppNotStarted:
+                    label1.Text = "App NOT started.";
+                    this.BackColor = Color.DarkRed;
+                    this.ControlBox = true;
+
+                    this.Visible = true;
+                    blinkLabelTimer.Enabled = false;
+                    break;
+
             }
         }
 
@@ -78,14 +91,8 @@ namespace TimeTrackerWarning
             var sb = Screen.AllScreens.Last().WorkingArea;
             this.Location = new Point(sb.Right - this.Width, sb.Top + 150);
             //this.SetBounds((int)(sb.X + 0.5 * sb.Width), sb.Y + 20, sb.Width / 2, sb.Height / 3);
-            this.Visible = IsWorkActive() && !IsTracking();
-        }
-
-        bool IsWorkActive()
-        {
-            return true;
-            //return HasProcessWithTitlePart(
-            //    "flowol4", "robotmesh", "ConsoleTest", "PlaySerialScript", "FireBreath");
+            this.Visible = false;
+            CheckStateAndUpdate();
         }
 
         bool HasProcessWithTitlePart(params String[] titles)
@@ -113,6 +120,9 @@ namespace TimeTrackerWarning
 
         private void notifyIcon_Click(object sender, EventArgs e)
         {
+            this.Visible = true;
+            checkODeskTimer.Enabled = true;
+            showAgainTimer.Enabled = false;
         }
 
 
@@ -138,6 +148,26 @@ namespace TimeTrackerWarning
             notifyIcon.Text = sb.ToString();
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Yes: hide the warning for 10 minutes\n"
+                + "No: exit the tracker app"
+                , "Hide or exit?", MessageBoxButtons.YesNo);
 
+            if (result == DialogResult.Yes)
+            {
+                checkODeskTimer.Enabled = false;
+                showAgainTimer.Enabled = true;
+                this.Visible = false;
+                e.Cancel = true;
+            }
+        }
+
+        private void showAgainTimer_Tick(object sender, EventArgs e)
+        {
+            checkODeskTimer.Enabled = true;
+            showAgainTimer.Enabled = false;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,16 @@ namespace TimeTrackerWarning
             var procs = Process.GetProcessesByName("tahometer");
             if (procs.Length == 0) 
             { 
-                return TimeTrackingState.Inactive; 
+                return TimeTrackingState.AppNotStarted; 
             }
 
             // Check the icon in the system tray
-            var notificationIcons = Utils.GetNotificationIconsImage();
-            if (notificationIcons == null)
+            Bitmap notificationIcons;
+            try
+            {
+                notificationIcons = Utils.GetNotificationIconsImage();
+            }
+            catch (Exception)
             {
                 return TimeTrackingState.Unknown;
             }

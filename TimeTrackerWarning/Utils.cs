@@ -50,7 +50,7 @@ namespace TimeTrackerWarning
                         HEIGHT);
                 
                 default:
-                    return null;
+                    throw new Exception("Invalid TaskBarLocation: " + taskBarLocation);
             }
         }
 

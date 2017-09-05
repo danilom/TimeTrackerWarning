@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.blinkLabelTimer = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.showAgainTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // checkODeskTimer
@@ -47,6 +48,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
@@ -69,6 +71,11 @@
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
+            // showAgainTimer
+            // 
+            this.showAgainTimer.Interval = 6;
+            this.showAgainTimer.Tick += new System.EventHandler(this.showAgainTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,6 +93,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Time Not Tracked";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
@@ -97,6 +105,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer blinkLabelTimer;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Timer showAgainTimer;
     }
 }
 
