@@ -71,7 +71,6 @@ namespace TimeTrackerWarning
                 case TimeTrackingState.AppNotStarted:
                     label1.Text = "App NOT started.";
                     this.BackColor = Color.DarkRed;
-                    this.ControlBox = true;
 
                     this.Visible = true;
                     blinkLabelTimer.Enabled = false;
@@ -148,26 +147,36 @@ namespace TimeTrackerWarning
             notifyIcon.Text = sb.ToString();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void showAgainTimer_Tick(object sender, EventArgs e)
+        {
+            checkODeskTimer.Enabled = true;
+            showAgainTimer.Enabled = false;
+        }
+
+        private void bClose_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
-                "Yes: hide the warning for 10 minutes\n"
-                + "No: exit the tracker app"
-                , "Hide or exit?", MessageBoxButtons.YesNo);
+                "Close TimeTrackerWarning?"
+                , "Close?", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void bSnooze_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Snooze TimeTrackerWarning for 10 minutes?"
+                , "Snooze", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
                 checkODeskTimer.Enabled = false;
                 showAgainTimer.Enabled = true;
                 this.Visible = false;
-                e.Cancel = true;
             }
-        }
-
-        private void showAgainTimer_Tick(object sender, EventArgs e)
-        {
-            checkODeskTimer.Enabled = true;
-            showAgainTimer.Enabled = false;
         }
     }
 }
