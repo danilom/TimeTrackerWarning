@@ -15,7 +15,7 @@ namespace TimeTrackerWarning
 {
     public partial class MainForm : Form
     {
-        ITimeTracker _tracker = new Tahometer();
+        ITimeTracker _tracker = new TopTracker();
 
         DateTime _startTime;
 
@@ -24,7 +24,7 @@ namespace TimeTrackerWarning
         DateTime _today;
         TimeSpan _timeWorkedToday;
         TimeSpan _timeWorkedYesterday;
-        const double _hourlyRate = 55;
+        const double _hourlyRate = 65;
 
         public MainForm()
         {
@@ -55,8 +55,7 @@ namespace TimeTrackerWarning
                     }
                     _timeWorkedToday = _timeWorkedToday + TimeSpan.FromMilliseconds(checkODeskTimer.Interval);
                     UpdateTimeAndEarnings();
-
-                    this.Visible = false;
+                    this.Visible = false; // Window not visible, no need to bother the user
 
                     blinkLabelTimer.Enabled = false;
                     break;
@@ -66,17 +65,22 @@ namespace TimeTrackerWarning
                         "Time NOT tracked." : "State unknown";
                     this.BackColor = Color.Red;
                     this.Visible = true;
+
                     blinkLabelTimer.Enabled = true;
+                    label1.Visible = true;
                     break;
                 case TimeTrackingState.AppNotStarted:
                     label1.Text = "App NOT started.";
                     this.BackColor = Color.DarkRed;
-
                     this.Visible = true;
+
                     blinkLabelTimer.Enabled = false;
                     break;
 
             }
+
+            // Always show the label on state change
+            label1.Visible = true;
         }
 
 

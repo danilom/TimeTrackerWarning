@@ -58,6 +58,7 @@
     <Compile Include="ODesk.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopTracker.cs" />
     <Compile Include="Tahometer.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -94,6 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TahometerStopped.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\TopTrackerRunning.png" />
+    <Content Include="Resources\TopTrackerStopped.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

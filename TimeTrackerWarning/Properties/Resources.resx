@@ -124,6 +124,12 @@
   <data name="TahometerStopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TahometerStopped.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TopTrackerRunning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\toptrackerrunning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopTrackerStopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\toptrackerstopped.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TrayIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TrayIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
