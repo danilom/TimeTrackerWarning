@@ -91,14 +91,16 @@
     <None Include="Resources\TrayIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TahometerRunning.png" />
+    <Content Include="Resources\TahometerRunning.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TahometerStopped.png" />
+    <Content Include="Resources\TahometerStopped.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\TopTrackerRunning.png" />
+    <Content Include="Resources\TopTrackerRunning2.png" />
     <Content Include="Resources\TopTrackerStopped.png" />
+    <Content Include="Resources\TopTrackerStopped2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

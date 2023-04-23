@@ -89,7 +89,7 @@ namespace TimeTrackerWarning
 
         public static bool ContainsBitmap(Bitmap smallBmp, Bitmap bigBmp)
         {
-            var pos = SearchBitmap(smallBmp, bigBmp, 0, true);
+            var pos = SearchBitmap(smallBmp, bigBmp, 0.1, true);
             return pos != null;
         }
 

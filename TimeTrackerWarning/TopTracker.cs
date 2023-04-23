@@ -30,11 +30,11 @@ namespace TimeTrackerWarning
                 return TimeTrackingState.Unknown;
             }
 
-            if (Utils.ContainsBitmap(Resources.TopTrackerRunning, notificationIcons))
+            if (Utils.ContainsBitmap(Resources.TopTrackerRunning2, notificationIcons))
             {
                 return TimeTrackingState.Active;
             }
-            if (Utils.ContainsBitmap(Resources.TopTrackerStopped, notificationIcons))
+            if (Utils.ContainsBitmap(Resources.TopTrackerStopped2, notificationIcons))
             {
                 return TimeTrackingState.Inactive;
             }
