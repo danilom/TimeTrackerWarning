@@ -21,13 +21,14 @@ namespace TimeTrackerWarning
         // Settings
         readonly string TITLE = "Time Tracker Warning";
         readonly TimeSpan _snoozeDuration = new TimeSpan(0, 10, 0);
-        DateTime _snoozeStart;
+        DateTime _snoozeEndTime = DateTime.MaxValue;
 
         public MainForm()
         {
             this.Text = TITLE;
             InitializeComponent();
             UpdateTrayTooltip();
+            this.bSnooze.Text = "Snooze for " + _snoozeDuration.TotalMinutes + " min";
         }
 
         TimeTrackingState _trackingState = TimeTrackingState.Unknown;
@@ -105,8 +106,7 @@ namespace TimeTrackerWarning
             
             if (snoozeTimer.Enabled)
             {
-                TimeSpan snoozeRemaining = _snoozeDuration - (DateTime.Now - _snoozeStart);
-                sb.AppendLine("Snooze until: " + (_snoozeStart + _snoozeDuration));
+                sb.AppendLine("Snooze until: " + (_snoozeEndTime));
             }
 
             // Max 64
@@ -118,7 +118,10 @@ namespace TimeTrackerWarning
 
         private void snoozeTimer_Tick(object sender, EventArgs e)
         {
-            SnoozeEnd();
+            if (DateTime.Now > _snoozeEndTime)
+            {
+                SnoozeEnd();
+            }
         }
 
         private void bClose_Click(object sender, EventArgs e)
@@ -148,9 +151,8 @@ namespace TimeTrackerWarning
         void SnoozeStart()
         {
             checkAppStateTimer.Enabled = false;
-            snoozeTimer.Interval = (int)_snoozeDuration.TotalMilliseconds;
             snoozeTimer.Enabled = true;
-            _snoozeStart = DateTime.Now;
+            _snoozeEndTime = DateTime.Now + _snoozeDuration;
             this.Visible = false;
             UpdateTrayTooltip();
         }
@@ -161,7 +163,7 @@ namespace TimeTrackerWarning
             this.Visible = true;
             checkAppStateTimer.Enabled = true;
             snoozeTimer.Enabled = false;
-            _snoozeStart = DateTime.MinValue;
+            _snoozeEndTime = DateTime.MaxValue;
             UpdateTrayTooltip();
         }
 

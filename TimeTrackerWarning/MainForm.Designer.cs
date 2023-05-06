@@ -75,7 +75,7 @@
             // 
             // snoozeTimer
             // 
-            this.snoozeTimer.Interval = 6;
+            this.snoozeTimer.Interval = 1000;
             this.snoozeTimer.Tick += new System.EventHandler(this.snoozeTimer_Tick);
             // 
             // bSnooze
@@ -83,9 +83,9 @@
             this.bSnooze.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bSnooze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSnooze.ForeColor = System.Drawing.Color.White;
-            this.bSnooze.Location = new System.Drawing.Point(450, 5);
+            this.bSnooze.Location = new System.Drawing.Point(452, 5);
             this.bSnooze.Name = "bSnooze";
-            this.bSnooze.Size = new System.Drawing.Size(135, 26);
+            this.bSnooze.Size = new System.Drawing.Size(133, 40);
             this.bSnooze.TabIndex = 1;
             this.bSnooze.Text = "Snooze for 10 min";
             this.bSnooze.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             this.bClose.ForeColor = System.Drawing.Color.White;
             this.bClose.Location = new System.Drawing.Point(591, 5);
             this.bClose.Name = "bClose";
-            this.bClose.Size = new System.Drawing.Size(59, 26);
+            this.bClose.Size = new System.Drawing.Size(59, 40);
             this.bClose.TabIndex = 2;
             this.bClose.Text = "Close";
             this.bClose.UseVisualStyleBackColor = true;
