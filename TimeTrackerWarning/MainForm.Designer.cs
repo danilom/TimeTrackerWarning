@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.checkODeskTimer = new System.Windows.Forms.Timer(this.components);
+            this.checkAppStateTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.blinkLabelTimer = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.showAgainTimer = new System.Windows.Forms.Timer(this.components);
+            this.snoozeTimer = new System.Windows.Forms.Timer(this.components);
             this.bSnooze = new System.Windows.Forms.Button();
             this.bClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // checkODeskTimer
+            // checkAppStateTimer
             // 
-            this.checkODeskTimer.Enabled = true;
-            this.checkODeskTimer.Interval = 5000;
-            this.checkODeskTimer.Tick += new System.EventHandler(this.timer_Tick);
+            this.checkAppStateTimer.Enabled = true;
+            this.checkAppStateTimer.Interval = 5000;
+            this.checkAppStateTimer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // label1
             // 
@@ -68,20 +68,21 @@
             // notifyIcon
             // 
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "ODesk time tracker";
+            this.notifyIcon.Text = "Time Tracker Warning";
             this.notifyIcon.Visible = true;
             this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
-            // showAgainTimer
+            // snoozeTimer
             // 
-            this.showAgainTimer.Interval = 6;
-            this.showAgainTimer.Tick += new System.EventHandler(this.showAgainTimer_Tick);
+            this.snoozeTimer.Interval = 6;
+            this.snoozeTimer.Tick += new System.EventHandler(this.snoozeTimer_Tick);
             // 
             // bSnooze
             // 
             this.bSnooze.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bSnooze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSnooze.ForeColor = System.Drawing.Color.White;
             this.bSnooze.Location = new System.Drawing.Point(450, 5);
             this.bSnooze.Name = "bSnooze";
             this.bSnooze.Size = new System.Drawing.Size(135, 26);
@@ -94,6 +95,7 @@
             // 
             this.bClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bClose.ForeColor = System.Drawing.Color.White;
             this.bClose.Location = new System.Drawing.Point(591, 5);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(59, 26);
@@ -115,23 +117,24 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Opacity = 0.5D;
+            this.Opacity = 0.4D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Time Not Tracked";
+            this.Text = "Time Tracker Warning";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer checkODeskTimer;
+        private System.Windows.Forms.Timer checkAppStateTimer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer blinkLabelTimer;
         private System.Windows.Forms.NotifyIcon notifyIcon;
-        private System.Windows.Forms.Timer showAgainTimer;
+        private System.Windows.Forms.Timer snoozeTimer;
         private System.Windows.Forms.Button bSnooze;
         private System.Windows.Forms.Button bClose;
     }
