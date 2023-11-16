@@ -1,24 +1,32 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace TimeTrackerWarning
 {
     static class Utils
     {
+        // Difficult to detect progammatically, set from an ITimeTracker class 
+        public static double ScreenScaling = 1;
+        static double ContainsBitmapTolerance = 0.2;
+
         public static Bitmap GetNotificationIconsImage()
         {
-            const int WIDTH = 400;
-            const int HEIGHT = 130; // vertical notification area is smaller, two rows
+            const int WIDTH = 600;
+            const int HEIGHT = 120; // vertical notification area is smaller, two rows
 
             var taskBarLocation = GetTaskBarLocation();
             var ps = Screen.PrimaryScreen;
+
             switch (taskBarLocation)
             {
                 // Horizontal taskbar
@@ -56,6 +64,11 @@ namespace TimeTrackerWarning
 
         private static Bitmap Capture(int x, int y, int width, int height)
         {
+            x = (int)(x * ScreenScaling);
+            y = (int)(y * ScreenScaling);
+            width = (int)(width * ScreenScaling);
+            height = (int)(height * ScreenScaling);
+
             var bmpScreenCapture = new Bitmap(width, height);
             using (Graphics g = Graphics.FromImage(bmpScreenCapture))
             {
@@ -89,7 +102,7 @@ namespace TimeTrackerWarning
 
         public static bool ContainsBitmap(Bitmap smallBmp, Bitmap bigBmp)
         {
-            var pos = SearchBitmap(smallBmp, bigBmp, 0.1, true);
+            var pos = SearchBitmap(smallBmp, bigBmp, ContainsBitmapTolerance, true);
             return pos != null;
         }
 

@@ -53,11 +53,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(22, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(631, 153);
+            this.label1.Size = new System.Drawing.Size(1157, 282);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Time NOT tracked.";
+            this.label1.Text = "Checking...";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // blinkLabelTimer
@@ -83,9 +84,10 @@
             this.bSnooze.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bSnooze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSnooze.ForeColor = System.Drawing.Color.White;
-            this.bSnooze.Location = new System.Drawing.Point(452, 5);
+            this.bSnooze.Location = new System.Drawing.Point(829, 9);
+            this.bSnooze.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.bSnooze.Name = "bSnooze";
-            this.bSnooze.Size = new System.Drawing.Size(133, 40);
+            this.bSnooze.Size = new System.Drawing.Size(244, 74);
             this.bSnooze.TabIndex = 1;
             this.bSnooze.Text = "Snooze for 10 min";
             this.bSnooze.UseVisualStyleBackColor = true;
@@ -96,9 +98,10 @@
             this.bClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bClose.ForeColor = System.Drawing.Color.White;
-            this.bClose.Location = new System.Drawing.Point(591, 5);
+            this.bClose.Location = new System.Drawing.Point(1084, 9);
+            this.bClose.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.bClose.Name = "bClose";
-            this.bClose.Size = new System.Drawing.Size(59, 40);
+            this.bClose.Size = new System.Drawing.Size(108, 74);
             this.bClose.TabIndex = 2;
             this.bClose.Text = "Close";
             this.bClose.UseVisualStyleBackColor = true;
@@ -106,14 +109,15 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(655, 171);
+            this.ClientSize = new System.Drawing.Size(1201, 316);
             this.ControlBox = false;
             this.Controls.Add(this.bClose);
             this.Controls.Add(this.bSnooze);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";

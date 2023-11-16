@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TimeTrackerWarning
 {
-    enum TimeTrackingState { Unknown, AppNotStarted, Inactive, Active }
+    enum TimeTrackingState { 
+        Starting,
+        Unknown, 
+        AppNotStarted, 
+        Inactive, 
+        Active 
+    }
 
     interface ITimeTracker
     {

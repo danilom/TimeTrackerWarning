@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimeTrackerWarning</RootNamespace>
     <AssemblyName>TimeTrackerWarning</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +93,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\TahometerRunning.png" />
+    <None Include="Resources\tt_running_mask.png" />
+    <None Include="Resources\tt_inactive_mask.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\TahometerStopped.png" />
@@ -99,6 +102,7 @@
   <ItemGroup>
     <Content Include="Resources\TopTrackerRunning.png" />
     <Content Include="Resources\TopTrackerRunning2.png" />
+    <None Include="Resources\TopTrackerRunning3.png" />
     <Content Include="Resources\TopTrackerStopped.png" />
     <Content Include="Resources\TopTrackerStopped2.png" />
   </ItemGroup>

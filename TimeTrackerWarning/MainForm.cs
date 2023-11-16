@@ -31,7 +31,7 @@ namespace TimeTrackerWarning
             this.bSnooze.Text = "Snooze for " + _snoozeDuration.TotalMinutes + " min";
         }
 
-        TimeTrackingState _trackingState = TimeTrackingState.Unknown;
+        TimeTrackingState _trackingState = TimeTrackingState.Starting;
         private void timer_Tick(object sender, EventArgs e)
         {
             CheckStateAndUpdate();
@@ -45,6 +45,7 @@ namespace TimeTrackerWarning
             switch (_trackingState)
             {
                 case TimeTrackingState.Active:
+                    label1.Text = "Active";
                     this.Visible = false; // Window not visible, no need to bother the user
                     blinkLabelTimer.Enabled = false;
                     break;
@@ -85,7 +86,7 @@ namespace TimeTrackerWarning
             this.Location = new Point(sb.Right - this.Width, sb.Top + 150);
             //this.SetBounds((int)(sb.X + 0.5 * sb.Width), sb.Y + 20, sb.Width / 2, sb.Height / 3);
             this.Visible = false;
-            CheckStateAndUpdate();
+            //CheckStateAndUpdate();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -127,11 +127,17 @@
   <data name="TopTrackerRunning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\toptrackerrunning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TopTrackerRunning150" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tt_running_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TopTrackerRunning2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\toptrackerrunning2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TopTrackerStopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\toptrackerstopped.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopTrackerStopped150" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tt_inactive_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TopTrackerStopped2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\toptrackerstopped2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
