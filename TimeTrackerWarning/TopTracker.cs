@@ -22,9 +22,9 @@ namespace TimeTrackerWarning
         public TimeTrackingState CheckState()
         {
             var procs = Process.GetProcessesByName("TopTracker");
-            if (procs.Length == 0) 
-            { 
-                return TimeTrackingState.AppNotStarted; 
+            if (procs.Length == 0)
+            {
+                return TimeTrackingState.AppNotStarted;
             }
 
             // Check the icon in the system tray
@@ -38,13 +38,17 @@ namespace TimeTrackerWarning
                 return TimeTrackingState.Unknown;
             }
 
+            // 1.5x icons on Win 10 vs Win 11 look different
+
             //if (Utils.ContainsBitmap(Resources.TopTrackerRunning2, notificationIcons)
-            if (Utils.ContainsBitmap(Resources.TopTrackerRunning150, notificationIcons))
+            if (Utils.ContainsBitmap(Resources.TopTrackerRunning150w10, notificationIcons)
+                || Utils.ContainsBitmap(Resources.TopTrackerRunning150, notificationIcons))
             {
                 return TimeTrackingState.Active;
             }
             //if (Utils.ContainsBitmap(Resources.TopTrackerStopped2, notificationIcons)
-            if (Utils.ContainsBitmap(Resources.TopTrackerStopped150, notificationIcons))
+            if (Utils.ContainsBitmap(Resources.TopTrackerStopped150w10, notificationIcons)
+                || Utils.ContainsBitmap(Resources.TopTrackerStopped150, notificationIcons))
             {
                 return TimeTrackingState.Inactive;
             }

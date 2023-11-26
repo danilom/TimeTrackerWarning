@@ -103,6 +103,16 @@ namespace TimeTrackerWarning.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TopTrackerRunning150w10 {
+            get {
+                object obj = ResourceManager.GetObject("TopTrackerRunning150w10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TopTrackerRunning2 {
             get {
                 object obj = ResourceManager.GetObject("TopTrackerRunning2", resourceCulture);
@@ -126,6 +136,16 @@ namespace TimeTrackerWarning.Properties {
         internal static System.Drawing.Bitmap TopTrackerStopped150 {
             get {
                 object obj = ResourceManager.GetObject("TopTrackerStopped150", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TopTrackerStopped150w10 {
+            get {
+                object obj = ResourceManager.GetObject("TopTrackerStopped150w10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

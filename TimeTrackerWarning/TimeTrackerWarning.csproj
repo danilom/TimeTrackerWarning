@@ -101,9 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\TopTrackerRunning.png" />
+    <None Include="Resources\TopTrackerRunning150w10.png" />
     <Content Include="Resources\TopTrackerRunning2.png" />
     <None Include="Resources\TopTrackerRunning3.png" />
     <Content Include="Resources\TopTrackerStopped.png" />
+    <None Include="Resources\TopTrackerStopped150w10.png" />
     <Content Include="Resources\TopTrackerStopped2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
